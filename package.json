@@ -2,6 +2,21 @@
   "name": "yeme-web",
   "version": "0.1.0",
   "private": true,
+  "description": "Your Expenses Made Easy",
+  "homepage": "https://github.com/Guru1911004/yeme-web#readme",
+  "bugs": {
+    "url": "https://github.com/Guru1911004/yeme-web/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Guru1911004/yeme-web.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "main": "middleware.js",
+  "directories": {
+    "lib": "lib"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",

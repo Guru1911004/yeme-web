@@ -1,26 +1,219 @@
 @import "tailwindcss";
+@config "../tailwind.config.js";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ── Font declarations ───────────────────────────────────── */
+@font-face {
+  font-family: 'YemeMedium';
+  src: url('/app/fonts/YemeMedium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@font-face {
+  font-family: 'YemeBold';
+  src: url('/app/fonts/YemeBold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ── Base reset ──────────────────────────────────────────── */
+@layer base {
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #0C0B14;
+    color: #FFFFFF;
+    font-family: 'YemeMedium', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'YemeBold', sans-serif;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    color: #FFFFFF;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  button {
+    cursor: pointer;
+    font-family: 'YemeMedium', sans-serif;
+  }
+
+  input,
+  textarea,
+  select {
+    font-family: 'YemeMedium', sans-serif;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ── CSS variables ───────────────────────────────────────── */
+:root {
+  --purple: #3B266F;
+  --purple-light: #4e318f;
+  --purple-dim: rgba(59, 38, 111, 0.15);
+  --blue: #49BFFF;
+  --blue-dim: rgba(73, 191, 255, 0.12);
+  --blue-border: rgba(73, 191, 255, 0.25);
+  --white: #FFFFFF;
+  --off-white: #F0EEF8;
+  --gray: #8A8A9A;
+  --gray-light: #C0BFCC;
+  --dark: #0C0B14;
+  --dark-2: #13111F;
+  --dark-3: #1A1828;
+  --border: rgba(255, 255, 255, 0.08);
+}
+
+/* ── Reusable component layer ────────────────────────────── */
+@layer components {
+
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-7 py-3.5 rounded-xl text-sm font-medium text-white transition-all duration-200;
+    background-color: var(--purple);
+  }
+
+  .btn-primary:hover {
+    background-color: var(--purple-light);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-7 py-3.5 rounded-xl text-sm font-medium text-white transition-all duration-200;
+    border: 1px solid var(--border);
+    background: transparent;
+  }
+
+  .btn-secondary:hover {
+    border-color: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .btn-blue {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-xl text-sm font-medium transition-all duration-200;
+    background: var(--blue-dim);
+    border: 1px solid var(--blue-border);
+    color: var(--blue);
+  }
+
+  .btn-blue:hover {
+    background: rgba(73, 191, 255, 0.2);
+  }
+
+  /* Section tag (small label above headings) */
+  .section-tag {
+    @apply inline-block text-xs font-bold tracking-widest uppercase mb-4;
+    color: var(--blue);
+  }
+
+  /* Card base */
+  .card {
+    @apply rounded-2xl p-7 transition-all duration-300;
+    background: var(--dark-2);
+    border: 1px solid var(--border);
+  }
+
+  .card:hover {
+    border-color: rgba(59, 38, 111, 0.5);
+    transform: translateY(-4px);
+  }
+
+  /* Form elements */
+  .form-label {
+    @apply block text-xs font-bold tracking-wider uppercase mb-2;
+    color: var(--gray-light);
+  }
+
+  .form-input {
+    @apply w-full rounded-xl px-4 py-3 text-sm text-white outline-none transition-all duration-200;
+    background: var(--dark-3);
+    border: 1px solid var(--border);
+  }
+
+  .form-input:focus {
+    border-color: var(--purple);
+    box-shadow: 0 0 0 3px rgba(59, 38, 111, 0.2);
+  }
+
+  .form-input::placeholder {
+    color: var(--gray);
+  }
+
+  /* Divider */
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0;
+  }
+
+  /* Nav link */
+  .nav-link {
+    @apply px-3.5 py-2 rounded-lg text-sm font-medium transition-all duration-200;
+    color: var(--gray);
+  }
+
+  .nav-link:hover {
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .nav-link.active {
+    color: var(--white);
+  }
+}
+
+/* ── Utility extras ──────────────────────────────────────── */
+@layer utilities {
+  .text-gradient-blue {
+    background: linear-gradient(135deg, var(--blue) 0%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-purple-glow {
+    background: radial-gradient(ellipse 60% 60% at 70% 50%, rgba(59, 38, 111, 0.35) 0%, transparent 70%);
+  }
+
+  .bg-blue-glow {
+    background: radial-gradient(ellipse 40% 40% at 20% 80%, rgba(73, 191, 255, 0.08) 0%, transparent 60%);
+  }
+
+  .border-dark {
+    border-color: var(--border);
+  }
 }
