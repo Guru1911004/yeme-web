@@ -37,22 +37,31 @@ export default function Footer() {
 
                     {/* Brand */}
                     <div className="md:col-span-1">
-                        <Link href="/">
-                            <Image
-                                src="/images/logo.png"
-                                alt="YEME"
-                                width={100}
-                                height={35}
-                                className="object-contain mb-4"
-                                style={{ width: 'auto', height: 'auto' }}
-                            />
+                        <Link href="/" className="inline-block mb-5">
+                            {/* White background pill so the purple logo reads on dark footer */}
+                            <div
+                                className="flex items-center px-4 py-2.5"
+                                style={{
+                                    borderRadius: '12px',
+                                    background: 'white',
+                                    display: 'inline-flex',
+                                }}
+                            >
+                                <Image
+                                    src="/images/logo.png"
+                                    alt="YEME"
+                                    width={88}
+                                    height={30}
+                                    className="object-contain"
+                                />
+                            </div>
                         </Link>
-                        <p className="text-sm leading-relaxed" style={{ color: '#8A8A9A', maxWidth: '260px' }}>
+                        <p className="text-sm leading-relaxed mb-5" style={{ color: '#8A8A9A', maxWidth: '240px' }}>
                             Unifying payments, loyalty, and group expenses for Australia. Earn more from every dollar you spend.
                         </p>
-                        <p className="text-xs mt-6" style={{ color: '#8A8A9A' }}>
+                        <p className="text-xs leading-relaxed" style={{ color: '#555566' }}>
                             In collaboration with{' '}
-                            <span style={{ color: '#C0BFCC' }}>Swinburne University of Technology</span>
+                            <span style={{ color: '#8A8A9A' }}>Swinburne University of Technology</span>
                         </p>
                     </div>
 
@@ -121,8 +130,8 @@ export default function Footer() {
                 <div className="border-t mb-6" style={{ borderColor: 'rgba(255,255,255,0.08)' }} />
 
                 {/* Legal disclaimer */}
-                <p className="text-[11px] leading-relaxed mb-6" style={{ color: '#555566' }}>
-                    All product names, logos, and brands used within our application, prototype, website, and all other channels,
+                <p className="text-[11px] leading-relaxed mb-6" style={{ color: '#444455' }}>
+                    All product names, logos, and brands used within our application, prototype, website, and all other channels
                     are property of their respective owners. These trademarks, logos, and brand names are used solely for
                     identification and informational purposes to demonstrate the functionality of our prototype application.
                     Use of these trademarks does not imply endorsement, sponsorship, or affiliation. Our application is in a

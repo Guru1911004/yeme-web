@@ -19,6 +19,10 @@ export const metadata = {
     title: 'YEME — Spend Smarter. Earn More.',
     description: 'YEME unifies your cards, loyalty programs, and group expenses into one app. Every transaction earns you YEMs redeemable for real rewards.',
     keywords: 'YEME, loyalty rewards, virtual card, split payments, fintech, Australia',
+    icons: {
+        icon: '/images/favicon.png',
+        apple: '/images/favicon.png',
+    },
     openGraph: {
         title: 'YEME — Spend Smarter. Earn More.',
         description: 'Unify your cards, loyalty programs, and group expenses. Earn YEMs on every transaction.',

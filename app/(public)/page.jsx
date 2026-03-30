@@ -271,7 +271,7 @@ export default function HomePage() {
                     </div>
                     <div className="flex-1 flex justify-center">
                         <Image
-                            src="/images/home-3.png"
+                            src="/images/home_3.png"
                             alt="YEME loyalty program discovery"
                             width={480}
                             height={420}
