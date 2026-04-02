@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -26,8 +28,8 @@ export default function Footer() {
         <footer
             className="border-t"
             style={{
-                backgroundColor: '#13111F',
-                borderColor: 'rgba(255,255,255,0.08)',
+                backgroundColor: 'var(--bg-2)',
+                borderColor: 'var(--divider)',
             }}
         >
             <div className="max-w-[1200px] mx-auto px-6 pt-16 pb-8">
@@ -56,18 +58,18 @@ export default function Footer() {
                                 />
                             </div>
                         </Link>
-                        <p className="text-sm leading-relaxed mb-5" style={{ color: '#8A8A9A', maxWidth: '240px' }}>
+                        <p className="text-sm leading-relaxed mb-5" style={{ color: 'var(--fg-2)', maxWidth: '240px' }}>
                             Unifying payments, loyalty, and group expenses for Australia. Earn more from every dollar you spend.
                         </p>
-                        <p className="text-xs leading-relaxed" style={{ color: '#555566' }}>
+                        <p className="text-xs leading-relaxed" style={{ color: 'var(--fg-muted)' }}>
                             In collaboration with{' '}
-                            <span style={{ color: '#8A8A9A' }}>Swinburne University of Technology</span>
+                            <span style={{ color: 'var(--fg-2)' }}>Swinburne University of Technology</span>
                         </p>
                     </div>
 
                     {/* Product */}
                     <div>
-                        <p className="text-[11px] font-bold tracking-widest uppercase mb-5" style={{ color: '#C0BFCC' }}>
+                        <p className="text-[11px] font-bold tracking-widest uppercase mb-5" style={{ color: 'var(--fg)' }}>
                             Product
                         </p>
                         <ul className="flex flex-col gap-3">
@@ -75,8 +77,10 @@ export default function Footer() {
                                 <li key={label}>
                                     <Link
                                         href={href}
-                                        className="text-[13.5px] transition-colors duration-200 hover:text-white"
-                                        style={{ color: '#8A8A9A' }}
+                                        className="text-[13.5px] transition-colors duration-200"
+                                        style={{ color: 'var(--fg-2)' }}
+                                        onMouseEnter={e => e.currentTarget.style.color = 'var(--fg)'}
+                                        onMouseLeave={e => e.currentTarget.style.color = 'var(--fg-2)'}
                                     >
                                         {label}
                                     </Link>
@@ -95,8 +99,10 @@ export default function Footer() {
                                 <li key={label}>
                                     <Link
                                         href={href}
-                                        className="text-[13.5px] transition-colors duration-200 hover:text-white"
-                                        style={{ color: '#8A8A9A' }}
+                                        className="text-[13.5px] transition-colors duration-200"
+                                        style={{ color: 'var(--fg-2)' }}
+                                        onMouseEnter={e => e.currentTarget.style.color = 'var(--fg)'}
+                                        onMouseLeave={e => e.currentTarget.style.color = 'var(--fg-2)'}
                                     >
                                         {label}
                                     </Link>
@@ -127,27 +133,29 @@ export default function Footer() {
                 </div>
 
                 {/* Divider */}
-                <div className="border-t mb-6" style={{ borderColor: 'rgba(255,255,255,0.08)' }} />
+                <div className="border-t mb-6" style={{ borderColor: 'var(--divider)' }} />
 
                 {/* Legal disclaimer */}
-                <p className="text-[11px] leading-relaxed mb-6" style={{ color: '#444455' }}>
+                <p className="text-[11px] leading-relaxed mb-6" style={{ color: 'var(--fg-muted)' }}>
                     All product names, logos, and brands used within our application, prototype, website, and all other channels
                     are property of their respective owners. These trademarks, logos, and brand names are used solely for
                     identification and informational purposes to demonstrate the functionality of our prototype application.
                     Use of these trademarks does not imply endorsement, sponsorship, or affiliation. Our application is in a
                     prototype stage. If you are the owner of any logo or brand used and have concerns, please contact us at{' '}
-                    <a href="mailto:info@yeme.com.au" style={{ color: '#49BFFF' }}>info@yeme.com.au</a>.
+                    <a href="mailto:info@yeme.com.au" style={{ color: 'var(--purple)' }}>info@yeme.com.au</a>.
                 </p>
 
                 {/* Bottom bar */}
                 <div className="flex flex-col md:flex-row justify-between items-center gap-3">
-                    <p className="text-[12.5px]" style={{ color: '#8A8A9A' }}>
+                    <p className="text-[12.5px]" style={{ color: 'var(--fg-2)' }}>
                         © 2025 YEME. All rights reserved. Melbourne, Australia.
                     </p>
                     <a
                         href="mailto:info@yeme.com.au"
-                        className="text-[12.5px] transition-colors duration-200 hover:text-white"
-                        style={{ color: '#49BFFF' }}
+                        className="text-[12.5px] transition-colors duration-200"
+                        style={{ color: 'var(--purple)' }}
+                        onMouseEnter={e => e.currentTarget.style.color = 'var(--fg)'}
+                        onMouseLeave={e => e.currentTarget.style.color = 'var(--purple)'}
                     >
                         info@yeme.com.au
                     </a>

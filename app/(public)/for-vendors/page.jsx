@@ -6,7 +6,7 @@ import Link from 'next/link'
 function Tag({ children }) {
     return (
         <span className="inline-block text-[11px] font-bold tracking-widest uppercase mb-4"
-            style={{ color: '#49BFFF' }}>
+            style={{ color: 'var(--purple)' }}>
             {children}
         </span>
     )
@@ -17,16 +17,16 @@ function BenefitCard({ title, desc }) {
         <div
             className="rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1"
             style={{
-                background: '#13111F',
-                border: '1px solid rgba(255,255,255,0.08)',
+                background: 'var(--bg-2)',
+                border: '1px solid var(--divider)',
             }}
         >
             <div
                 className="w-1.5 h-1.5 rounded-full mb-5"
-                style={{ background: '#49BFFF' }}
+                style={{ background: 'var(--purple)' }}
             />
-            <h3 className="text-[16px] font-bold mb-3">{title}</h3>
-            <p className="text-[13.5px] leading-relaxed" style={{ color: '#8A8A9A' }}>{desc}</p>
+            <h3 className="text-[16px] font-bold mb-3" style={{ color: 'var(--fg)' }}>{title}</h3>
+            <p className="text-[13.5px] leading-relaxed" style={{ color: 'var(--fg-2)' }}>{desc}</p>
         </div>
     )
 }
@@ -36,18 +36,18 @@ function HowCard({ num, title, desc }) {
         <div
             className="rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1"
             style={{
-                background: '#13111F',
-                border: '1px solid rgba(255,255,255,0.08)',
+                background: 'var(--bg-surface)',
+                border: '1px solid var(--divider)',
             }}
         >
             <div
                 className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold text-white mb-6 shrink-0"
-                style={{ background: '#3B266F', border: '1px solid rgba(255,255,255,0.15)' }}
+                style={{ background: '#3B266F' }}
             >
                 {num}
             </div>
-            <h3 className="text-[15px] font-bold mb-3">{title}</h3>
-            <p className="text-[13.5px] leading-relaxed" style={{ color: '#8A8A9A' }}>{desc}</p>
+            <h3 className="text-[15px] font-bold mb-3" style={{ color: 'var(--fg)' }}>{title}</h3>
+            <p className="text-[13.5px] leading-relaxed" style={{ color: 'var(--fg-2)' }}>{desc}</p>
         </div>
     )
 }
@@ -61,7 +61,7 @@ export default function ForVendorsPage() {
                 <div
                     className="absolute inset-0 pointer-events-none"
                     style={{
-                        background: 'radial-gradient(ellipse 60% 65% at 60% 0%, rgba(59,38,111,0.45) 0%, transparent 70%)',
+                        background: 'radial-gradient(ellipse 60% 65% at 60% 0%, rgba(59,38,111,0.18) 0%, transparent 70%)',
                     }}
                 />
                 <div className="max-w-[1200px] mx-auto relative z-10 flex flex-col md:flex-row items-center gap-16">
@@ -72,11 +72,11 @@ export default function ForVendorsPage() {
                             style={{ letterSpacing: '-2px' }}
                         >
                             Ready to Supercharge Your{' '}
-                            <span style={{ color: '#49BFFF' }}>Repeat Business?</span>
+                            <span style={{ color: 'var(--purple)' }}>Repeat Business?</span>
                         </h1>
                         <p
                             className="text-[17px] leading-relaxed mb-8 max-w-[520px]"
-                            style={{ color: '#8A8A9A' }}
+                            style={{ color: 'var(--fg-2)' }}
                         >
                             Discover a new era in customer engagement. Partner with YEME to
                             effortlessly integrate loyalty programs into your business. Break free
@@ -86,7 +86,7 @@ export default function ForVendorsPage() {
                         <Link
                             href="/onboard"
                             className="inline-flex items-center justify-center px-8 py-4 rounded-xl text-[15px] font-bold text-white transition-all duration-200"
-                            style={{ background: '#3B266F', border: '1px solid rgba(255,255,255,0.15)' }}
+                            style={{ background: '#3B266F' }}
                             onMouseEnter={e => e.currentTarget.style.background = '#4e318f'}
                             onMouseLeave={e => e.currentTarget.style.background = '#3B266F'}
                         >
@@ -105,10 +105,10 @@ export default function ForVendorsPage() {
                 </div>
             </section>
 
-            <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.08)' }} />
+            <hr style={{ border: 'none', borderTop: '1px solid var(--divider)' }} />
 
             {/* ── WHY YEME FOR LOYALTY ─────────────────────────── */}
-            <section className="py-24 px-6" style={{ background: '#13111F' }}>
+            <section className="py-24 px-6" style={{ background: 'var(--bg-2)' }}>
                 <div className="max-w-[1200px] mx-auto">
                     <div className="mb-14">
                         <Tag>Why YEME</Tag>
@@ -137,7 +137,7 @@ export default function ForVendorsPage() {
                 </div>
             </section>
 
-            <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.08)' }} />
+            <hr style={{ border: 'none', borderTop: '1px solid var(--divider)' }} />
 
             {/* ── WHAT YEME OFFERS ─────────────────────────────── */}
             <section className="py-24 px-6">
@@ -173,10 +173,10 @@ export default function ForVendorsPage() {
                 </div>
             </section>
 
-            <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.08)' }} />
+            <hr style={{ border: 'none', borderTop: '1px solid var(--divider)' }} />
 
             {/* ── HOW IT WORKS ─────────────────────────────────── */}
-            <section className="py-24 px-6" style={{ background: '#13111F' }}>
+            <section className="py-24 px-6" style={{ background: 'var(--bg-2)' }}>
                 <div className="max-w-[1200px] mx-auto">
                     <div className="text-center mb-14">
                         <Tag>How It Works</Tag>
@@ -208,7 +208,7 @@ export default function ForVendorsPage() {
                 </div>
             </section>
 
-            <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.08)' }} />
+            <hr style={{ border: 'none', borderTop: '1px solid var(--divider)' }} />
 
             {/* ── APP SCREENSHOTS ──────────────────────────────── */}
             <section className="py-24 px-6">
@@ -223,7 +223,7 @@ export default function ForVendorsPage() {
                         </h2>
                         <p
                             className="text-[15px] leading-relaxed mb-5"
-                            style={{ color: '#8A8A9A' }}
+                            style={{ color: 'var(--fg-2)' }}
                         >
                             YEME gives your business a built-in loyalty program without the setup cost,
                             the card stock, or the complexity. When your customers pay with YEME,
@@ -232,7 +232,7 @@ export default function ForVendorsPage() {
                         </p>
                         <p
                             className="text-[15px] leading-relaxed mb-8"
-                            style={{ color: '#8A8A9A' }}
+                            style={{ color: 'var(--fg-2)' }}
                         >
                             Every transaction through YEME is a chance to bring a customer back.
                             Set your own earn rate, run promotions, and watch your loyal customer
@@ -241,7 +241,7 @@ export default function ForVendorsPage() {
                         <Link
                             href="/onboard"
                             className="inline-flex items-center justify-center px-8 py-4 rounded-xl text-[15px] font-bold text-white transition-all duration-200"
-                            style={{ background: '#3B266F', border: '1px solid rgba(255,255,255,0.15)' }}
+                            style={{ background: '#3B266F' }}
                         >
                             Apply Now
                         </Link>
@@ -258,16 +258,16 @@ export default function ForVendorsPage() {
                 </div>
             </section>
 
-            <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.08)' }} />
+            <hr style={{ border: 'none', borderTop: '1px solid var(--divider)' }} />
 
             {/* ── EARLY ACCESS STRIP ───────────────────────────── */}
-            <section className="py-24 px-6" style={{ background: '#13111F' }}>
+            <section className="py-24 px-6" style={{ background: 'var(--bg-2)' }}>
                 <div className="max-w-[1200px] mx-auto">
                     <div
                         className="rounded-2xl p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-10"
                         style={{
-                            background: 'linear-gradient(135deg, rgba(59,38,111,0.25) 0%, rgba(73,191,255,0.06) 100%)',
-                            border: '1px solid rgba(59,38,111,0.4)',
+                            background: 'linear-gradient(135deg, rgba(59,38,111,0.15) 0%, rgba(59,38,111,0.05) 100%)',
+                            border: '1px solid rgba(59,38,111,0.25)',
                         }}
                     >
                         <div className="max-w-[560px]">
@@ -280,7 +280,7 @@ export default function ForVendorsPage() {
                             </h2>
                             <p
                                 className="text-[15px] leading-relaxed"
-                                style={{ color: '#8A8A9A' }}
+                                style={{ color: 'var(--fg-2)' }}
                             >
                                 It is not just integration — it is a partnership for unparalleled
                                 customer engagement. Vendors who onboard during our prototype phase
@@ -291,7 +291,7 @@ export default function ForVendorsPage() {
                             <Link
                                 href="/onboard"
                                 className="inline-flex items-center justify-center px-8 py-4 rounded-xl text-[15px] font-bold text-white transition-all duration-200 text-center"
-                                style={{ background: '#3B266F', border: '1px solid rgba(255,255,255,0.15)' }}
+                                style={{ background: '#3B266F' }}
                             >
                                 Apply as a Vendor
                             </Link>
@@ -300,8 +300,8 @@ export default function ForVendorsPage() {
                                 className="inline-flex items-center justify-center px-8 py-4 rounded-xl text-[14px] font-medium transition-all duration-200 text-center"
                                 style={{
                                     background: 'transparent',
-                                    border: '1px solid rgba(255,255,255,0.1)',
-                                    color: 'rgba(255,255,255,0.6)',
+                                    border: '1px solid var(--divider)',
+                                    color: 'var(--fg-2)',
                                 }}
                             >
                                 info@yeme.com.au

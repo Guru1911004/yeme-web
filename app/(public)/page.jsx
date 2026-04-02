@@ -5,7 +5,7 @@ import Link from 'next/link'
 function Tag({ children }) {
     return (
         <span className="inline-block text-[11px] font-bold tracking-widest uppercase mb-4"
-            style={{ color: '#49BFFF' }}>
+            style={{ color: 'var(--purple)' }}>
             {children}
         </span>
     )
@@ -23,8 +23,8 @@ function FeatureRow({ tag, title, points, image, imageAlt, reverse = false }) {
                 <ul className="flex flex-col gap-3">
                     {points.map((p, i) => (
                         <li key={i} className="flex items-start gap-3">
-                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: '#49BFFF' }} />
-                            <span className="text-[15px] leading-relaxed" style={{ color: '#8A8A9A' }}>{p}</span>
+                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: 'var(--purple)' }} />
+                            <span className="text-[15px] leading-relaxed" style={{ color: 'var(--fg-2)' }}>{p}</span>
                         </li>
                     ))}
                 </ul>
@@ -46,9 +46,9 @@ function FeatureRow({ tag, title, points, image, imageAlt, reverse = false }) {
 function YemCard({ title, desc }) {
     return (
         <div className="rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1"
-            style={{ backgroundColor: '#13111F', border: '1px solid rgba(255,255,255,0.08)' }}>
-            <h4 className="text-[15px] font-bold mb-2">{title}</h4>
-            <p className="text-[13.5px] leading-relaxed" style={{ color: '#8A8A9A' }}>{desc}</p>
+            style={{ backgroundColor: 'var(--bg-2)', border: '1px solid var(--divider)' }}>
+            <h4 className="text-[15px] font-bold mb-2" style={{ color: 'var(--fg)' }}>{title}</h4>
+            <p className="text-[13.5px] leading-relaxed" style={{ color: 'var(--fg-2)' }}>{desc}</p>
         </div>
     )
 }
@@ -63,9 +63,9 @@ export default function HomePage() {
 
                 {/* background glows */}
                 <div className="absolute inset-0 pointer-events-none"
-                    style={{ background: 'radial-gradient(ellipse 60% 60% at 70% 50%, rgba(59,38,111,0.35) 0%, transparent 70%)' }} />
+                    style={{ background: 'radial-gradient(ellipse 60% 60% at 70% 50%, rgba(59,38,111,0.12) 0%, transparent 70%)' }} />
                 <div className="absolute inset-0 pointer-events-none"
-                    style={{ background: 'radial-gradient(ellipse 40% 40% at 20% 80%, rgba(73,191,255,0.08) 0%, transparent 60%)' }} />
+                    style={{ background: 'radial-gradient(ellipse 40% 40% at 20% 80%, rgba(59,38,111,0.06) 0%, transparent 60%)' }} />
 
                 <div className="max-w-[1200px] mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center relative z-10 py-20">
 
@@ -73,21 +73,21 @@ export default function HomePage() {
                     <div>
                         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase mb-7"
                             style={{
-                                backgroundColor: 'rgba(73,191,255,0.12)',
-                                border: '1px solid rgba(73,191,255,0.25)',
-                                color: '#49BFFF',
+                                backgroundColor: 'var(--purple-dim)',
+                                border: '1px solid rgba(59,38,111,0.20)',
+                                color: 'var(--purple)',
                             }}>
-                            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: '#49BFFF' }} />
+                            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: 'var(--purple)' }} />
                             Now in Australia
                         </div>
 
                         <h1 className="text-[clamp(40px,5vw,62px)] font-bold leading-[1.1] mb-6"
                             style={{ letterSpacing: '-2px' }}>
                             Lost in the Maze of<br />
-                            <span style={{ color: '#49BFFF' }}>Tracking Expenses?</span>
+                            <span style={{ color: 'var(--purple)' }}>Tracking Expenses?</span>
                         </h1>
 
-                        <p className="text-[17px] leading-relaxed mb-8 max-w-[480px]" style={{ color: '#8A8A9A' }}>
+                        <p className="text-[17px] leading-relaxed mb-8 max-w-[480px]" style={{ color: 'var(--fg-2)' }}>
                             Seamlessly navigate expenses, rewards, and group payments with YEME.
                             Unlock limitless rewards — your gateway to smarter spending.
                         </p>
@@ -110,11 +110,11 @@ export default function HomePage() {
                             ].map(({ num, label }) => (
                                 <div key={label}>
                                     <p className="text-2xl font-bold" style={{ fontFamily: 'YemeBold, sans-serif' }}>
-                                        {num.split(/([K+$])/).map((part, i) => 
-                                            /[K+$]/.test(part) ? <span key={i} style={{ color: '#49BFFF' }}>{part}</span> : part
+                                        {num.split(/([K+$])/).map((part, i) =>
+                                            /[K+$]/.test(part) ? <span key={i} style={{ color: 'var(--purple)' }}>{part}</span> : part
                                         )}
                                     </p>
-                                    <p className="text-[12px] mt-1" style={{ color: '#8A8A9A' }}>{label}</p>
+                                    <p className="text-[12px] mt-1" style={{ color: 'var(--fg-2)' }}>{label}</p>
                                 </div>
                             ))}
                         </div>
@@ -134,7 +134,7 @@ export default function HomePage() {
                 </div>
             </section>
 
-            <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.08)' }} />
+            <hr style={{ border: 'none', borderTop: '1px solid var(--divider)' }} />
 
             {/* ── FEATURES ─────────────────────────────────────── */}
             <section id="features" className="py-24 px-6">
@@ -152,7 +152,7 @@ export default function HomePage() {
                         imageAlt="YEME unified wallet screen"
                     />
 
-                    <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.08)' }} />
+                    <hr style={{ border: 'none', borderTop: '1px solid var(--divider)' }} />
 
                     <FeatureRow
                         tag="Loyalty Programs"
@@ -167,7 +167,7 @@ export default function HomePage() {
                         reverse
                     />
 
-                    <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.08)' }} />
+                    <hr style={{ border: 'none', borderTop: '1px solid var(--divider)' }} />
 
                     <FeatureRow
                         tag="Gift Cards"
@@ -181,7 +181,7 @@ export default function HomePage() {
                         imageAlt="YEME gift card screen"
                     />
 
-                    <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.08)' }} />
+                    <hr style={{ border: 'none', borderTop: '1px solid var(--divider)' }} />
 
                     <FeatureRow
                         tag="Split Payments"
@@ -196,7 +196,7 @@ export default function HomePage() {
                         reverse
                     />
 
-                    <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.08)' }} />
+                    <hr style={{ border: 'none', borderTop: '1px solid var(--divider)' }} />
 
                     <FeatureRow
                         tag="Group Expenses"
@@ -213,10 +213,10 @@ export default function HomePage() {
                 </div>
             </section>
 
-            <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.08)' }} />
+            <hr style={{ border: 'none', borderTop: '1px solid var(--divider)' }} />
 
             {/* ── HOW IT WORKS ─────────────────────────────────── */}
-            <section id="how-it-works" className="py-24 px-6" style={{ backgroundColor: '#13111F' }}>
+            <section id="how-it-works" className="py-24 px-6" style={{ backgroundColor: 'var(--bg-2)' }}>
                 <div className="max-w-[1200px] mx-auto">
                     <div className="text-center mb-16">
                         <Tag>How It Works</Tag>
@@ -233,20 +233,20 @@ export default function HomePage() {
                             { num: '4', title: 'Tap and earn', desc: 'Pay at any terminal. YEMs land in your account automatically with every purchase.' },
                         ].map(({ num, title, desc }) => (
                             <div key={num} className="rounded-2xl p-8 text-center relative"
-                                style={{ backgroundColor: '#1A1828', border: '1px solid rgba(255,255,255,0.08)' }}>
+                                style={{ backgroundColor: 'var(--bg-surface)', border: '1px solid var(--divider)' }}>
                                 <div className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold text-white mx-auto mb-5"
                                     style={{ backgroundColor: '#3B266F' }}>
                                     {num}
                                 </div>
                                 <h3 className="text-[15px] font-bold mb-3">{title}</h3>
-                                <p className="text-[13px] leading-relaxed" style={{ color: '#8A8A9A' }}>{desc}</p>
+                                <p className="text-[13px] leading-relaxed" style={{ color: 'var(--fg-2)' }}>{desc}</p>
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.08)' }} />
+            <hr style={{ border: 'none', borderTop: '1px solid var(--divider)' }} />
 
             {/* ── LOYALTY PROGRAMS ─────────────────────────────── */}
             <section className="py-24 px-6">
@@ -263,8 +263,8 @@ export default function HomePage() {
                                 'Effortlessly manage and track all your loyalty memberships in one place.',
                             ].map((p, i) => (
                                 <li key={i} className="flex items-start gap-3">
-                                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: '#49BFFF' }} />
-                                    <span className="text-[15px] leading-relaxed" style={{ color: '#8A8A9A' }}>{p}</span>
+                                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: 'var(--purple)' }} />
+                                    <span className="text-[15px] leading-relaxed" style={{ color: 'var(--fg-2)' }}>{p}</span>
                                 </li>
                             ))}
                         </ul>
@@ -281,10 +281,10 @@ export default function HomePage() {
                 </div>
             </section>
 
-            <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.08)' }} />
+            <hr style={{ border: 'none', borderTop: '1px solid var(--divider)' }} />
 
             {/* ── YEMs SECTION ─────────────────────────────────── */}
-            <section id="yems" className="py-24 px-6" style={{ backgroundColor: '#13111F' }}>
+            <section id="yems" className="py-24 px-6" style={{ backgroundColor: 'var(--bg-2)' }}>
                 <div className="max-w-[1200px] mx-auto">
 
                     <div className="flex flex-col md:flex-row items-center gap-16 mb-20">
@@ -293,7 +293,7 @@ export default function HomePage() {
                             <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight" style={{ letterSpacing: '-1px' }}>
                                 YEMs: Unlock a World of Rewards
                             </h2>
-                            <p className="text-[16px] leading-relaxed mb-6" style={{ color: '#8A8A9A' }}>
+                            <p className="text-[16px] leading-relaxed mb-6" style={{ color: 'var(--fg-2)' }}>
                                 Explore the YEME Gift Card Store for instant gratification.
                                 Accumulate in-app points (YEMs) with every transaction,
                                 opening a world of possibilities.
@@ -305,8 +305,8 @@ export default function HomePage() {
                                     'Use these YEMs for a world of rewarding possibilities in our Gift Card Store.',
                                 ].map((p, i) => (
                                     <li key={i} className="flex items-start gap-3">
-                                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: '#49BFFF' }} />
-                                        <span className="text-[15px] leading-relaxed" style={{ color: '#8A8A9A' }}>{p}</span>
+                                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: 'var(--purple)' }} />
+                                        <span className="text-[15px] leading-relaxed" style={{ color: 'var(--fg-2)' }}>{p}</span>
                                     </li>
                                 ))}
                             </ul>
@@ -352,7 +352,7 @@ export default function HomePage() {
                 </div>
             </section>
 
-            <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.08)' }} />
+            <hr style={{ border: 'none', borderTop: '1px solid var(--divider)' }} />
 
             {/* ── SURVEY STRIP ─────────────────────────────────── */}
             <section className="py-24 px-6">
@@ -360,13 +360,13 @@ export default function HomePage() {
                     <div className="rounded-2xl p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-10"
                         style={{
                             background: 'linear-gradient(135deg, rgba(59,38,111,0.2) 0%, rgba(73,191,255,0.08) 100%)',
-                            border: '1px solid rgba(255,255,255,0.08)',
+                            border: '1px solid rgba(59,38,111,0.10)',
                         }}>
                         <div>
                             <h2 className="text-2xl md:text-3xl font-bold mb-3" style={{ letterSpacing: '-0.5px' }}>
                                 Share Your Insights with YEME
                             </h2>
-                            <p className="text-[15px] leading-relaxed max-w-[540px]" style={{ color: '#8A8A9A' }}>
+                            <p className="text-[15px] leading-relaxed max-w-[540px]" style={{ color: 'var(--fg-2)' }}>
                                 We invite you to be a part of shaping YEME's journey. Whether you're a potential user
                                 or a vendor interested in collaboration, your opinions matter. Take a moment to share
                                 your insights and help us mould this app.
@@ -379,9 +379,9 @@ export default function HomePage() {
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center justify-center px-6 py-3 rounded-xl text-sm font-medium transition-all duration-200"
                                 style={{
-                                    backgroundColor: 'rgba(73,191,255,0.12)',
-                                    border: '1px solid rgba(73,191,255,0.25)',
-                                    color: '#49BFFF',
+                                    backgroundColor: 'var(--purple-dim)',
+                                    border: '1px solid rgba(59,38,111,0.25)',
+                                    color: 'var(--purple)',
                                 }}
                             >
                                 Survey for Users
@@ -401,13 +401,13 @@ export default function HomePage() {
             </section>
 
             {/* ── CTA BOTTOM ───────────────────────────────────── */}
-            <section className="py-24 px-6 text-center" style={{ backgroundColor: '#13111F' }}>
+            <section className="py-24 px-6 text-center" style={{ backgroundColor: 'var(--bg-2)' }}>
                 <div className="max-w-[700px] mx-auto">
                     <Tag>Unlock YEME's Potential Today</Tag>
                     <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight" style={{ letterSpacing: '-1px' }}>
                         Elevate your journey with YEME
                     </h2>
-                    <p className="text-[16px] leading-relaxed mb-10" style={{ color: '#8A8A9A' }}>
+                    <p className="text-[16px] leading-relaxed mb-10" style={{ color: 'var(--fg-2)' }}>
                         Where seamless transactions meet boundless rewards. Join us in revolutionising
                         the way you navigate payments, rewards, and group expenses.
                     </p>

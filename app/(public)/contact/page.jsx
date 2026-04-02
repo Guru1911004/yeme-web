@@ -6,7 +6,7 @@ import Link from 'next/link'
 function Tag({ children }) {
     return (
         <span className="inline-block text-[11px] font-bold tracking-widest uppercase mb-4"
-            style={{ color: '#49BFFF' }}>
+            style={{ color: 'var(--purple)' }}>
             {children}
         </span>
     )
@@ -17,24 +17,24 @@ function InfoCard({ icon, label, value, href }) {
         <div
             className="flex items-center gap-4 rounded-xl p-5 transition-all duration-200"
             style={{
-                background: '#13111F',
-                border: '1px solid rgba(255,255,255,0.08)',
+                background: 'var(--bg-2)',
+                border: '1px solid var(--divider)',
             }}
         >
             <div
                 className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 text-lg"
                 style={{
-                    background: 'rgba(73,191,255,0.1)',
-                    border: '1px solid rgba(73,191,255,0.2)',
+                    background: 'var(--purple-dim)',
+                    border: '1px solid rgba(59,38,111,0.25)',
                 }}
             >
                 {icon}
             </div>
             <div>
-                <p className="text-[11px] font-bold tracking-wider uppercase mb-1" style={{ color: '#8A8A9A' }}>
+                <p className="text-[11px] font-bold tracking-wider uppercase mb-1" style={{ color: 'var(--fg-muted)' }}>
                     {label}
                 </p>
-                <p className="text-[15px] font-medium text-white">{value}</p>
+                <p className="text-[15px] font-medium" style={{ color: 'var(--fg)' }}>{value}</p>
             </div>
         </div>
     )
@@ -56,10 +56,15 @@ export default function ContactPage() {
     const handleSubmit = async e => {
         e.preventDefault()
         setLoading(true)
-        // placeholder — wire to Flask API later
         await new Promise(r => setTimeout(r, 800))
         setLoading(false)
         setSubmitted(true)
+    }
+
+    const inputStyle = {
+        background: 'var(--bg-surface)',
+        border: '1px solid var(--border-color)',
+        color: 'var(--fg)',
     }
 
     return (
@@ -69,7 +74,7 @@ export default function ContactPage() {
                 <div
                     className="absolute inset-0 pointer-events-none"
                     style={{
-                        background: 'radial-gradient(ellipse 50% 55% at 50% 0%, rgba(59,38,111,0.35) 0%, transparent 70%)',
+                        background: 'radial-gradient(ellipse 50% 55% at 50% 0%, rgba(59,38,111,0.18) 0%, transparent 70%)',
                     }}
                 />
                 <div className="max-w-[640px] mx-auto text-center relative z-10">
@@ -80,7 +85,7 @@ export default function ContactPage() {
                     >
                         We would love to hear from you
                     </h1>
-                    <p className="text-[16px] leading-relaxed" style={{ color: '#8A8A9A' }}>
+                    <p className="text-[16px] leading-relaxed" style={{ color: 'var(--fg-2)' }}>
                         Whether you are a user with a question or a vendor curious about
                         partnering, we are quick to respond.
                     </p>
@@ -114,24 +119,24 @@ export default function ContactPage() {
                         <div
                             className="rounded-xl p-6 mt-2"
                             style={{
-                                background: 'rgba(59,38,111,0.15)',
-                                border: '1px solid rgba(59,38,111,0.35)',
+                                background: 'var(--purple-dim)',
+                                border: '1px solid rgba(59,38,111,0.25)',
                             }}
                         >
                             <p
                                 className="text-[11px] font-bold tracking-widest uppercase mb-3"
-                                style={{ color: '#49BFFF' }}
+                                style={{ color: 'var(--purple)' }}
                             >
                                 Are you a vendor?
                             </p>
-                            <p className="text-[13.5px] leading-relaxed mb-5" style={{ color: '#8A8A9A' }}>
+                            <p className="text-[13.5px] leading-relaxed mb-5" style={{ color: 'var(--fg-2)' }}>
                                 Skip the contact form and go straight to the vendor application.
                                 Our team will reach out within 24 hours.
                             </p>
                             <Link
                                 href="/onboard"
                                 className="flex items-center justify-center w-full py-3 rounded-xl text-[14px] font-bold text-white transition-all duration-200"
-                                style={{ background: '#3B266F', border: '1px solid rgba(255,255,255,0.15)' }}
+                                style={{ background: '#3B266F' }}
                             >
                                 Apply as a Vendor
                             </Link>
@@ -143,8 +148,8 @@ export default function ContactPage() {
                         <div
                             className="rounded-2xl p-12 flex flex-col items-center justify-center text-center"
                             style={{
-                                background: '#13111F',
-                                border: '1px solid rgba(255,255,255,0.08)',
+                                background: 'var(--bg-2)',
+                                border: '1px solid var(--divider)',
                                 minHeight: '420px',
                             }}
                         >
@@ -157,7 +162,7 @@ export default function ContactPage() {
                                 </svg>
                             </div>
                             <h2 className="text-2xl font-bold mb-3">Message sent</h2>
-                            <p className="text-[14px] leading-relaxed" style={{ color: '#8A8A9A', maxWidth: '320px' }}>
+                            <p className="text-[14px] leading-relaxed" style={{ color: 'var(--fg-2)', maxWidth: '320px' }}>
                                 Thanks for reaching out. We will get back to you within 24 hours.
                             </p>
                         </div>
@@ -166,15 +171,15 @@ export default function ContactPage() {
                             onSubmit={handleSubmit}
                             className="rounded-2xl p-8 flex flex-col gap-5"
                             style={{
-                                background: '#13111F',
-                                border: '1px solid rgba(255,255,255,0.08)',
+                                background: 'var(--bg-2)',
+                                border: '1px solid var(--divider)',
                             }}
                         >
 
                             {/* name row */}
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="flex flex-col gap-2">
-                                    <label className="text-[11px] font-bold tracking-wider uppercase" style={{ color: '#C0BFCC' }}>
+                                    <label className="text-[11px] font-bold tracking-wider uppercase" style={{ color: 'var(--fg-2)' }}>
                                         First Name
                                     </label>
                                     <input
@@ -183,17 +188,14 @@ export default function ContactPage() {
                                         onChange={handleChange}
                                         required
                                         placeholder="Jane"
-                                        className="rounded-xl px-4 py-3 text-[14px] text-white outline-none transition-all duration-200"
-                                        style={{
-                                            background: '#1A1828',
-                                            border: '1px solid rgba(255,255,255,0.08)',
-                                        }}
+                                        className="rounded-xl px-4 py-3 text-[14px] outline-none transition-all duration-200"
+                                        style={inputStyle}
                                         onFocus={e => e.target.style.borderColor = '#3B266F'}
-                                        onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.08)'}
+                                        onBlur={e => e.target.style.borderColor = 'var(--border-color)'}
                                     />
                                 </div>
                                 <div className="flex flex-col gap-2">
-                                    <label className="text-[11px] font-bold tracking-wider uppercase" style={{ color: '#C0BFCC' }}>
+                                    <label className="text-[11px] font-bold tracking-wider uppercase" style={{ color: 'var(--fg-2)' }}>
                                         Last Name
                                     </label>
                                     <input
@@ -202,20 +204,17 @@ export default function ContactPage() {
                                         onChange={handleChange}
                                         required
                                         placeholder="Smith"
-                                        className="rounded-xl px-4 py-3 text-[14px] text-white outline-none transition-all duration-200"
-                                        style={{
-                                            background: '#1A1828',
-                                            border: '1px solid rgba(255,255,255,0.08)',
-                                        }}
+                                        className="rounded-xl px-4 py-3 text-[14px] outline-none transition-all duration-200"
+                                        style={inputStyle}
                                         onFocus={e => e.target.style.borderColor = '#3B266F'}
-                                        onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.08)'}
+                                        onBlur={e => e.target.style.borderColor = 'var(--border-color)'}
                                     />
                                 </div>
                             </div>
 
                             {/* email */}
                             <div className="flex flex-col gap-2">
-                                <label className="text-[11px] font-bold tracking-wider uppercase" style={{ color: '#C0BFCC' }}>
+                                <label className="text-[11px] font-bold tracking-wider uppercase" style={{ color: 'var(--fg-2)' }}>
                                     Email
                                 </label>
                                 <input
@@ -225,19 +224,16 @@ export default function ContactPage() {
                                     onChange={handleChange}
                                     required
                                     placeholder="jane@example.com"
-                                    className="rounded-xl px-4 py-3 text-[14px] text-white outline-none transition-all duration-200"
-                                    style={{
-                                        background: '#1A1828',
-                                        border: '1px solid rgba(255,255,255,0.08)',
-                                    }}
+                                    className="rounded-xl px-4 py-3 text-[14px] outline-none transition-all duration-200"
+                                    style={inputStyle}
                                     onFocus={e => e.target.style.borderColor = '#3B266F'}
-                                    onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.08)'}
+                                    onBlur={e => e.target.style.borderColor = 'var(--border-color)'}
                                 />
                             </div>
 
                             {/* enquiry type */}
                             <div className="flex flex-col gap-2">
-                                <label className="text-[11px] font-bold tracking-wider uppercase" style={{ color: '#C0BFCC' }}>
+                                <label className="text-[11px] font-bold tracking-wider uppercase" style={{ color: 'var(--fg-2)' }}>
                                     Enquiry Type
                                 </label>
                                 <select
@@ -245,14 +241,13 @@ export default function ContactPage() {
                                     value={form.type}
                                     onChange={handleChange}
                                     required
-                                    className="rounded-xl px-4 py-3 text-[14px] text-white outline-none transition-all duration-200"
+                                    className="rounded-xl px-4 py-3 text-[14px] outline-none transition-all duration-200"
                                     style={{
-                                        background: '#1A1828',
-                                        border: '1px solid rgba(255,255,255,0.08)',
-                                        color: form.type ? '#fff' : '#8A8A9A',
+                                        ...inputStyle,
+                                        color: form.type ? 'var(--fg)' : 'var(--fg-muted)',
                                     }}
                                     onFocus={e => e.target.style.borderColor = '#3B266F'}
-                                    onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.08)'}
+                                    onBlur={e => e.target.style.borderColor = 'var(--border-color)'}
                                 >
                                     <option value="" disabled>Select a type</option>
                                     <option value="general">General question</option>
@@ -265,7 +260,7 @@ export default function ContactPage() {
 
                             {/* message */}
                             <div className="flex flex-col gap-2">
-                                <label className="text-[11px] font-bold tracking-wider uppercase" style={{ color: '#C0BFCC' }}>
+                                <label className="text-[11px] font-bold tracking-wider uppercase" style={{ color: 'var(--fg-2)' }}>
                                     Message
                                 </label>
                                 <textarea
@@ -275,13 +270,10 @@ export default function ContactPage() {
                                     required
                                     rows={5}
                                     placeholder="Tell us what is on your mind..."
-                                    className="rounded-xl px-4 py-3 text-[14px] text-white outline-none transition-all duration-200 resize-none"
-                                    style={{
-                                        background: '#1A1828',
-                                        border: '1px solid rgba(255,255,255,0.08)',
-                                    }}
+                                    className="rounded-xl px-4 py-3 text-[14px] outline-none transition-all duration-200 resize-none"
+                                    style={inputStyle}
                                     onFocus={e => e.target.style.borderColor = '#3B266F'}
-                                    onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.08)'}
+                                    onBlur={e => e.target.style.borderColor = 'var(--border-color)'}
                                 />
                             </div>
 
@@ -292,7 +284,6 @@ export default function ContactPage() {
                                 className="w-full py-4 rounded-xl text-[15px] font-bold text-white transition-all duration-200"
                                 style={{
                                     background: loading ? 'rgba(59,38,111,0.5)' : '#3B266F',
-                                    border: '1px solid rgba(255,255,255,0.15)',
                                     cursor: loading ? 'not-allowed' : 'pointer',
                                 }}
                             >

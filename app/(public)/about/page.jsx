@@ -4,7 +4,7 @@ import Link from 'next/link'
 function Tag({ children }) {
     return (
         <span className="inline-block text-[11px] font-bold tracking-widest uppercase mb-4"
-            style={{ color: '#49BFFF' }}>
+            style={{ color: 'var(--purple)' }}>
             {children}
         </span>
     )
@@ -15,12 +15,12 @@ function ValueCard({ title, desc }) {
         <div
             className="rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1"
             style={{
-                background: '#13111F',
-                border: '1px solid rgba(255,255,255,0.08)',
+                background: 'var(--bg-surface)',
+                border: '1px solid var(--divider)',
             }}
         >
-            <h3 className="text-[17px] font-bold mb-3">{title}</h3>
-            <p className="text-[14px] leading-relaxed" style={{ color: '#8A8A9A' }}>{desc}</p>
+            <h3 className="text-[17px] font-bold mb-3" style={{ color: 'var(--fg)' }}>{title}</h3>
+            <p className="text-[14px] leading-relaxed" style={{ color: 'var(--fg-2)' }}>{desc}</p>
         </div>
     )
 }
@@ -30,17 +30,17 @@ function WhyCard({ title, desc }) {
         <div
             className="rounded-2xl p-7 flex gap-5 items-start transition-all duration-300 hover:-translate-y-1"
             style={{
-                background: '#13111F',
-                border: '1px solid rgba(255,255,255,0.08)',
+                background: 'var(--bg-2)',
+                border: '1px solid var(--divider)',
             }}
         >
             <div
                 className="w-2 h-2 rounded-full shrink-0 mt-2"
-                style={{ background: '#49BFFF' }}
+                style={{ background: 'var(--purple)' }}
             />
             <div>
-                <h3 className="text-[15px] font-bold mb-2">{title}</h3>
-                <p className="text-[13.5px] leading-relaxed" style={{ color: '#8A8A9A' }}>{desc}</p>
+                <h3 className="text-[15px] font-bold mb-2" style={{ color: 'var(--fg)' }}>{title}</h3>
+                <p className="text-[13.5px] leading-relaxed" style={{ color: 'var(--fg-2)' }}>{desc}</p>
             </div>
         </div>
     )
@@ -55,7 +55,7 @@ export default function AboutPage() {
                 <div
                     className="absolute inset-0 pointer-events-none"
                     style={{
-                        background: 'radial-gradient(ellipse 55% 60% at 50% 0%, rgba(59,38,111,0.4) 0%, transparent 70%)',
+                        background: 'radial-gradient(ellipse 55% 60% at 50% 0%, rgba(59,38,111,0.18) 0%, transparent 70%)',
                     }}
                 />
                 <div className="max-w-[800px] mx-auto text-center relative z-10">
@@ -65,12 +65,12 @@ export default function AboutPage() {
                         style={{ letterSpacing: '-2px' }}
                     >
                         Welcome to YEME — Where
-                        <span style={{ color: '#49BFFF' }}> Innovation </span>
+                        <span style={{ color: 'var(--purple)' }}> Innovation </span>
                         Meets Simplicity
                     </h1>
                     <p
                         className="text-[17px] leading-relaxed max-w-[580px] mx-auto"
-                        style={{ color: '#8A8A9A' }}
+                        style={{ color: 'var(--fg-2)' }}
                     >
                         We are passionate about revolutionising the way you manage your expenses,
                         making every transaction a rewarding experience.
@@ -78,10 +78,10 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.08)' }} />
+            <hr style={{ border: 'none', borderTop: '1px solid var(--divider)' }} />
 
             {/* ── MISSION ──────────────────────────────────────── */}
-            <section className="py-24 px-6" style={{ background: '#13111F' }}>
+            <section className="py-24 px-6" style={{ background: 'var(--bg-2)' }}>
                 <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row gap-16 items-center">
 
                     {/* text */}
@@ -93,12 +93,12 @@ export default function AboutPage() {
                         >
                             Empowering Smart Spending
                         </h2>
-                        <p className="text-[15px] leading-relaxed mb-5" style={{ color: '#8A8A9A' }}>
+                        <p className="text-[15px] leading-relaxed mb-5" style={{ color: 'var(--fg-2)' }}>
                             At YEME, we are on a mission to streamline expenses, simplify split payments,
                             manage loyalty programs, and enhance the overall user experience. We believe
                             in making financial management seamless, rewarding, and accessible to all.
                         </p>
-                        <p className="text-[15px] leading-relaxed" style={{ color: '#8A8A9A' }}>
+                        <p className="text-[15px] leading-relaxed" style={{ color: 'var(--fg-2)' }}>
                             YEME is more than just a fintech solution — we are a community of innovators,
                             problem solvers, and finance enthusiasts dedicated to simplifying your
                             financial life. Our team brings together expertise in technology, finance,
@@ -111,22 +111,22 @@ export default function AboutPage() {
                         <div
                             className="rounded-2xl p-10 relative overflow-hidden"
                             style={{
-                                background: 'rgba(59,38,111,0.15)',
-                                border: '1px solid rgba(59,38,111,0.4)',
+                                background: 'rgba(59,38,111,0.12)',
+                                border: '1px solid rgba(59,38,111,0.35)',
                             }}
                         >
                             <div
                                 className="absolute inset-0 pointer-events-none"
                                 style={{
-                                    background: 'radial-gradient(ellipse 80% 80% at 0% 100%, rgba(73,191,255,0.06), transparent)',
+                                    background: 'radial-gradient(ellipse 80% 80% at 0% 100%, rgba(59,38,111,0.08), transparent)',
                                 }}
                             />
                             <p
                                 className="text-[20px] leading-relaxed font-medium relative z-10"
-                                style={{ color: '#F0EEF8', letterSpacing: '-0.3px' }}
+                                style={{ color: 'var(--fg)', letterSpacing: '-0.3px' }}
                             >
                                 "At YEME, we are on a mission to make every dollar you spend{' '}
-                                <span style={{ color: '#49BFFF', fontFamily: 'YemeBold, sans-serif' }}>
+                                <span style={{ color: 'var(--purple)', fontFamily: 'YemeBold, sans-serif' }}>
                                     work harder for you.
                                 </span>{' '}
                                 Loyalty should be effortless, payments should be seamless, and splitting
@@ -138,7 +138,7 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.08)' }} />
+            <hr style={{ border: 'none', borderTop: '1px solid var(--divider)' }} />
 
             {/* ── WHY CHOOSE YEME ──────────────────────────────── */}
             <section className="py-24 px-6">
@@ -182,10 +182,10 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.08)' }} />
+            <hr style={{ border: 'none', borderTop: '1px solid var(--divider)' }} />
 
             {/* ── CORE VALUES ──────────────────────────────────── */}
-            <section className="py-24 px-6" style={{ background: '#13111F' }}>
+            <section className="py-24 px-6" style={{ background: 'var(--bg-2)' }}>
                 <div className="max-w-[1200px] mx-auto">
                     <div className="text-center mb-14">
                         <Tag>Core Values</Tag>
@@ -214,7 +214,7 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.08)' }} />
+            <hr style={{ border: 'none', borderTop: '1px solid var(--divider)' }} />
 
             {/* ── APP PREVIEW ──────────────────────────────────── */}
             <section className="py-24 px-6">
@@ -236,12 +236,12 @@ export default function AboutPage() {
                         >
                             Experience the Future of Financial Management
                         </h2>
-                        <p className="text-[15px] leading-relaxed mb-5" style={{ color: '#8A8A9A' }}>
+                        <p className="text-[15px] leading-relaxed mb-5" style={{ color: 'var(--fg-2)' }}>
                             With YEME, you are not just a user — you are part of a community embracing
                             a new era of financial management. Our platform is designed to empower you,
                             offering features that address common challenges and enhance your financial journey.
                         </p>
-                        <p className="text-[15px] leading-relaxed mb-8" style={{ color: '#8A8A9A' }}>
+                        <p className="text-[15px] leading-relaxed mb-8" style={{ color: 'var(--fg-2)' }}>
                             From unified payments to smart loyalty tracking and effortless group splits,
                             YEME brings it all together in one sleek, intelligent app.
                         </p>
@@ -255,10 +255,11 @@ export default function AboutPage() {
                             </Link>
                             <Link
                                 href="/contact"
-                                className="inline-flex items-center justify-center px-7 py-3.5 rounded-xl text-sm font-medium text-white transition-all duration-200"
+                                className="inline-flex items-center justify-center px-7 py-3.5 rounded-xl text-sm font-medium transition-all duration-200"
                                 style={{
                                     background: 'transparent',
-                                    border: '1px solid rgba(255,255,255,0.12)',
+                                    border: '1px solid var(--divider)',
+                                    color: 'var(--fg-2)',
                                 }}
                             >
                                 Get in Touch
@@ -269,7 +270,7 @@ export default function AboutPage() {
             </section>
 
             {/* ── BOTTOM CTA ───────────────────────────────────── */}
-            <section className="py-24 px-6 text-center" style={{ background: '#13111F' }}>
+            <section className="py-24 px-6 text-center" style={{ background: 'var(--bg-2)' }}>
                 <div className="max-w-[640px] mx-auto">
                     <Tag>Join the Journey</Tag>
                     <h2
@@ -278,7 +279,7 @@ export default function AboutPage() {
                     >
                         Be part of the YEME experience
                     </h2>
-                    <p className="text-[15px] leading-relaxed mb-10" style={{ color: '#8A8A9A' }}>
+                    <p className="text-[15px] leading-relaxed mb-10" style={{ color: 'var(--fg-2)' }}>
                         Whether you are a user excited about YEME's potential or a vendor seeking
                         collaboration, we invite you to be part of this journey. Your support,
                         insights, and feedback are essential as we continue to innovate.
@@ -290,9 +291,9 @@ export default function AboutPage() {
                             rel="noopener noreferrer"
                             className="inline-flex items-center justify-center px-7 py-3.5 rounded-xl text-sm font-medium transition-all duration-200"
                             style={{
-                                background: 'rgba(73,191,255,0.1)',
-                                border: '1px solid rgba(73,191,255,0.25)',
-                                color: '#49BFFF',
+                                background: 'var(--purple-dim)',
+                                border: '1px solid rgba(59,38,111,0.25)',
+                                color: 'var(--purple)',
                             }}
                         >
                             Survey for Users

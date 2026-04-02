@@ -6,7 +6,7 @@ import Link from 'next/link'
 function Tag({ children }) {
     return (
         <span className="inline-block text-[11px] font-bold tracking-widest uppercase mb-4"
-            style={{ color: '#49BFFF' }}>
+            style={{ color: 'var(--purple)' }}>
             {children}
         </span>
     )
@@ -117,8 +117,8 @@ function FaqItem({ q, a }) {
         <div
             className="rounded-xl overflow-hidden transition-all duration-200"
             style={{
-                background: open ? 'rgba(59,38,111,0.12)' : '#13111F',
-                border: open ? '1px solid rgba(59,38,111,0.4)' : '1px solid rgba(255,255,255,0.08)',
+                background: open ? 'var(--purple-dim)' : 'var(--bg-2)',
+                border: open ? '1px solid rgba(59,38,111,0.4)' : '1px solid var(--divider)',
             }}
         >
             <button
@@ -127,19 +127,19 @@ function FaqItem({ q, a }) {
             >
                 <span
                     className="text-[15px] font-medium pr-8 leading-snug"
-                    style={{ color: open ? '#fff' : 'rgba(255,255,255,0.85)' }}
+                    style={{ color: 'var(--fg)' }}
                 >
                     {q}
                 </span>
                 <span
                     className="shrink-0 w-6 h-6 rounded-full flex items-center justify-center transition-all duration-300"
                     style={{
-                        background: open ? '#3B266F' : 'rgba(255,255,255,0.08)',
+                        background: open ? '#3B266F' : 'var(--border-color)',
                         transform: open ? 'rotate(45deg)' : 'rotate(0deg)',
                     }}
                 >
                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                        <path d="M5 1V9M1 5H9" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+                        <path d="M5 1V9M1 5H9" stroke={open ? 'white' : 'var(--fg)'} strokeWidth="1.5" strokeLinecap="round" />
                     </svg>
                 </span>
             </button>
@@ -149,7 +149,7 @@ function FaqItem({ q, a }) {
             >
                 <p
                     className="px-6 pb-6 text-[14px] leading-relaxed"
-                    style={{ color: '#8A8A9A' }}
+                    style={{ color: 'var(--fg-2)' }}
                 >
                     {a}
                 </p>
@@ -173,7 +173,7 @@ export default function FaqsPage() {
                 <div
                     className="absolute inset-0 pointer-events-none"
                     style={{
-                        background: 'radial-gradient(ellipse 50% 60% at 50% 0%, rgba(59,38,111,0.35) 0%, transparent 70%)',
+                        background: 'radial-gradient(ellipse 50% 60% at 50% 0%, rgba(59,38,111,0.18) 0%, transparent 70%)',
                     }}
                 />
                 <div className="max-w-[700px] mx-auto text-center relative z-10">
@@ -184,9 +184,9 @@ export default function FaqsPage() {
                     >
                         Questions we get asked a lot
                     </h1>
-                    <p className="text-[16px] leading-relaxed" style={{ color: '#8A8A9A' }}>
+                    <p className="text-[16px] leading-relaxed" style={{ color: 'var(--fg-2)' }}>
                         Can't find what you are looking for? Reach out via the{' '}
-                        <Link href="/contact" style={{ color: '#49BFFF' }}>Contact page</Link>
+                        <Link href="/contact" style={{ color: 'var(--purple)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>Contact page</Link>
                         {' '}and we will get back to you within 24 hours.
                     </p>
                 </div>
@@ -202,11 +202,11 @@ export default function FaqsPage() {
                                 onClick={() => setActiveCategory(cat)}
                                 className="px-4 py-2 rounded-full text-[13px] font-medium transition-all duration-200"
                                 style={{
-                                    background: activeCategory === cat ? '#3B266F' : 'rgba(255,255,255,0.06)',
+                                    background: activeCategory === cat ? '#3B266F' : 'var(--bg-2)',
                                     border: activeCategory === cat
-                                        ? '1px solid rgba(255,255,255,0.15)'
-                                        : '1px solid rgba(255,255,255,0.08)',
-                                    color: activeCategory === cat ? '#fff' : 'rgba(255,255,255,0.5)',
+                                        ? '1px solid rgba(59,38,111,0.4)'
+                                        : '1px solid var(--divider)',
+                                    color: activeCategory === cat ? '#fff' : 'var(--fg-2)',
                                 }}
                             >
                                 {cat}
@@ -223,7 +223,7 @@ export default function FaqsPage() {
                         <div key={category}>
                             <p
                                 className="text-[11px] font-bold tracking-widest uppercase mb-4"
-                                style={{ color: '#49BFFF' }}
+                                style={{ color: 'var(--purple)' }}
                             >
                                 {category}
                             </p>
@@ -240,7 +240,7 @@ export default function FaqsPage() {
             {/* ── BOTTOM CTA ───────────────────────────────────── */}
             <section
                 className="py-20 px-6 text-center"
-                style={{ background: '#13111F', borderTop: '1px solid rgba(255,255,255,0.08)' }}
+                style={{ background: 'var(--bg-2)', borderTop: '1px solid var(--divider)' }}
             >
                 <div className="max-w-[560px] mx-auto">
                     <Tag>Still have questions?</Tag>
@@ -250,13 +250,13 @@ export default function FaqsPage() {
                     >
                         We are happy to help
                     </h2>
-                    <p className="text-[14px] leading-relaxed mb-8" style={{ color: '#8A8A9A' }}>
+                    <p className="text-[14px] leading-relaxed mb-8" style={{ color: 'var(--fg-2)' }}>
                         Drop us a message and our team will get back to you within 24 hours.
                     </p>
                     <Link
                         href="/contact"
                         className="inline-flex items-center justify-center px-8 py-4 rounded-xl text-[15px] font-bold text-white transition-all duration-200"
-                        style={{ background: '#3B266F', border: '1px solid rgba(255,255,255,0.15)' }}
+                        style={{ background: '#3B266F', border: '1px solid rgba(59,38,111,0.4)' }}
                     >
                         Contact Us
                     </Link>

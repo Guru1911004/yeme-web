@@ -7,7 +7,7 @@ import Link from 'next/link'
 function Tag({ children }) {
     return (
         <span className="inline-block text-[11px] font-bold tracking-widest uppercase mb-4"
-            style={{ color: '#49BFFF' }}>
+            style={{ color: 'var(--purple)' }}>
             {children}
         </span>
     )
@@ -16,7 +16,7 @@ function Tag({ children }) {
 function Label({ children }) {
     return (
         <label className="block text-[11px] font-bold tracking-wider uppercase mb-2"
-            style={{ color: '#C0BFCC' }}>
+            style={{ color: 'var(--fg-2)' }}>
             {children}
         </label>
     )
@@ -27,10 +27,14 @@ function Input({ name, value, onChange, placeholder, type = 'text', required = t
         <input
             name={name} type={type} value={value} onChange={onChange}
             required={required} placeholder={placeholder}
-            className="w-full rounded-xl px-4 py-3 text-[14px] text-white outline-none transition-all duration-200"
-            style={{ background: '#1A1828', border: '1px solid rgba(255,255,255,0.08)' }}
+            className="w-full rounded-xl px-4 py-3 text-[14px] outline-none transition-all duration-200"
+            style={{
+                background: 'var(--bg-surface)',
+                border: '1px solid var(--border-color)',
+                color: 'var(--fg)',
+            }}
             onFocus={e => e.target.style.borderColor = '#3B266F'}
-            onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.08)'}
+            onBlur={e => e.target.style.borderColor = 'var(--border-color)'}
         />
     )
 }
@@ -41,12 +45,12 @@ function Select({ name, value, onChange, children, required = true }) {
             name={name} value={value} onChange={onChange} required={required}
             className="w-full rounded-xl px-4 py-3 text-[14px] outline-none transition-all duration-200"
             style={{
-                background: '#1A1828',
-                border: '1px solid rgba(255,255,255,0.08)',
-                color: value ? '#fff' : '#8A8A9A',
+                background: 'var(--bg-surface)',
+                border: '1px solid var(--border-color)',
+                color: value ? 'var(--fg)' : 'var(--fg-muted)',
             }}
             onFocus={e => e.target.style.borderColor = '#3B266F'}
-            onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.08)'}
+            onBlur={e => e.target.style.borderColor = 'var(--border-color)'}
         >
             {children}
         </select>
@@ -54,6 +58,8 @@ function Select({ name, value, onChange, children, required = true }) {
 }
 
 // ── Custom Program Modal ───────────────────────────────────
+// The modal always renders in a dark overlay regardless of theme
+// (it's a focused floating dialog, dark looks intentional here)
 function CustomModal({ onClose }) {
     const [conditions, setConditions] = useState([
         { yems: '1', per: 'Dollar', freq: 'EVERYTIME' },
@@ -77,7 +83,6 @@ function CustomModal({ onClose }) {
     const removeRow = i => setConditions(conditions.filter((_, idx) => idx !== i))
 
     return (
-        // overlay — faux viewport so fixed doesn't collapse
         <div
             className="fixed inset-0 z-[200] flex items-center justify-center p-4"
             style={{ background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(6px)' }}
@@ -98,7 +103,7 @@ function CustomModal({ onClose }) {
                     style={{ borderBottom: '1px solid rgba(255,255,255,0.07)' }}
                 >
                     <div>
-                        <p className="text-[16px] font-bold">Custom Loyalty Program</p>
+                        <p className="text-[16px] font-bold text-white">Custom Loyalty Program</p>
                         <p className="text-[12px] mt-0.5" style={{ color: '#49BFFF' }}>
                             Preview — available in your vendor dashboard after onboarding
                         </p>
@@ -185,11 +190,13 @@ function CustomModal({ onClose }) {
                             className="mt-6 pt-5"
                             style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}
                         >
-                            <p className="text-[13px] font-bold mb-1">First Time Customer</p>
+                            <p className="text-[13px] font-bold mb-1 text-white">First Time Customer</p>
                             <p className="text-[12px] mb-3" style={{ color: '#8A8A9A' }}>
                                 Referral points offered to each new customer
                             </p>
-                            <Label>Referral Points</Label>
+                            <label className="block text-[11px] font-bold tracking-wider uppercase mb-2" style={{ color: '#C0BFCC' }}>
+                                Referral Points
+                            </label>
                             <input
                                 type="number" defaultValue="340"
                                 className="w-full rounded-xl px-4 py-3 text-[14px] text-white outline-none"
@@ -201,7 +208,7 @@ function CustomModal({ onClose }) {
                         </div>
                     </div>
 
-                    {/* RIGHT — flyer preview */}
+                    {/* RIGHT — flyer preview (always dark/purple branded) */}
                     <div
                         className="p-6 flex flex-col"
                         style={{ background: '#3B266F', borderRadius: '0 0 16px 0' }}
@@ -278,7 +285,7 @@ function CustomModal({ onClose }) {
                     <button
                         onClick={onClose}
                         className="px-5 py-2.5 rounded-xl text-[13px] font-bold text-white transition-all duration-200"
-                        style={{ background: '#3B266F', border: '1px solid rgba(255,255,255,0.15)' }}
+                        style={{ background: '#3B266F' }}
                     >
                         Got it
                     </button>
@@ -351,7 +358,6 @@ export default function OnboardPage() {
     const handleSubmit = async e => {
         e.preventDefault()
         setLoading(true)
-        // wire to Flask /api/vendors/apply later
         await new Promise(r => setTimeout(r, 900))
         setLoading(false)
         setSubmitted(true)
@@ -370,7 +376,7 @@ export default function OnboardPage() {
             {/* ── HERO ───────────────────────────────────────────── */}
             <section className="relative pt-[130px] pb-10 px-6 overflow-hidden">
                 <div className="absolute inset-0 pointer-events-none"
-                    style={{ background: 'radial-gradient(ellipse 50% 55% at 50% 0%, rgba(59,38,111,0.4) 0%, transparent 70%)' }}
+                    style={{ background: 'radial-gradient(ellipse 50% 55% at 50% 0%, rgba(59,38,111,0.18) 0%, transparent 70%)' }}
                 />
                 <div className="max-w-[680px] mx-auto text-center relative z-10">
                     <Tag>Vendor Onboarding</Tag>
@@ -378,7 +384,7 @@ export default function OnboardPage() {
                         style={{ letterSpacing: '-1.5px' }}>
                         Bring YEME to your business
                     </h1>
-                    <p className="text-[16px] leading-relaxed" style={{ color: '#8A8A9A' }}>
+                    <p className="text-[16px] leading-relaxed" style={{ color: 'var(--fg-2)' }}>
                         Fill in the details below. Our team reviews every application
                         personally and gets back to you within 24 hours.
                     </p>
@@ -391,9 +397,9 @@ export default function OnboardPage() {
 
                     {submitted ? (
                         <div className="rounded-2xl p-14 flex flex-col items-center text-center"
-                            style={{ background: '#13111F', border: '1px solid rgba(255,255,255,0.08)' }}>
+                            style={{ background: 'var(--bg-2)', border: '1px solid var(--divider)' }}>
                             <div className="w-20 h-20 rounded-full flex items-center justify-center mb-6"
-                                style={{ background: '#3B266F', border: '1px solid rgba(255,255,255,0.15)' }}>
+                                style={{ background: '#3B266F' }}>
                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
                                     <path d="M6 16L13 23L26 9" stroke="white" strokeWidth="2.5"
                                         strokeLinecap="round" strokeLinejoin="round" />
@@ -401,26 +407,26 @@ export default function OnboardPage() {
                             </div>
                             <h2 className="text-2xl font-bold mb-3">Application received</h2>
                             <p className="text-[15px] leading-relaxed mb-8"
-                                style={{ color: '#8A8A9A', maxWidth: '380px' }}>
+                                style={{ color: 'var(--fg-2)', maxWidth: '380px' }}>
                                 Our team will review your application and reach out within
                                 24 hours to schedule a quick onboarding call.
                             </p>
                             <div className="flex flex-wrap gap-3 justify-center">
                                 <Link href="/"
                                     className="inline-flex items-center justify-center px-6 py-3 rounded-xl text-[14px] font-medium text-white"
-                                    style={{ background: '#3B266F', border: '1px solid rgba(255,255,255,0.15)' }}>
+                                    style={{ background: '#3B266F' }}>
                                     Back to Home
                                 </Link>
                                 <Link href="/for-vendors"
                                     className="inline-flex items-center justify-center px-6 py-3 rounded-xl text-[14px] font-medium"
-                                    style={{ border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.6)' }}>
+                                    style={{ border: '1px solid var(--divider)', color: 'var(--fg-2)' }}>
                                     Learn More
                                 </Link>
                             </div>
                         </div>
                     ) : (
                         <div className="rounded-2xl p-8 md:p-10"
-                            style={{ background: '#13111F', border: '1px solid rgba(255,255,255,0.08)' }}>
+                            style={{ background: 'var(--bg-2)', border: '1px solid var(--divider)' }}>
 
                             {/* step indicator */}
                             <div className="flex items-center gap-0 mb-8">
@@ -433,9 +439,9 @@ export default function OnboardPage() {
                                             <div className="flex items-center gap-2 shrink-0">
                                                 <div className="w-7 h-7 rounded-full flex items-center justify-center text-[12px] font-bold transition-all duration-300"
                                                     style={{
-                                                        background: done ? '#49BFFF' : active ? '#3B266F' : 'rgba(255,255,255,0.07)',
-                                                        border: active ? '1px solid rgba(255,255,255,0.2)' : '1px solid transparent',
-                                                        color: done || active ? '#fff' : '#8A8A9A',
+                                                        background: done ? '#49BFFF' : active ? '#3B266F' : 'var(--border-color)',
+                                                        border: active ? '1px solid rgba(59,38,111,0.4)' : '1px solid transparent',
+                                                        color: done || active ? '#fff' : 'var(--fg-muted)',
                                                     }}>
                                                     {done ? (
                                                         <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
@@ -444,13 +450,13 @@ export default function OnboardPage() {
                                                     ) : n}
                                                 </div>
                                                 <span className="text-[12px] font-medium hidden sm:block"
-                                                    style={{ color: active ? '#fff' : '#8A8A9A' }}>
+                                                    style={{ color: active ? 'var(--fg)' : 'var(--fg-muted)' }}>
                                                     {s}
                                                 </span>
                                             </div>
                                             {i < steps.length - 1 && (
                                                 <div className="h-px flex-1 mx-3 transition-all duration-300"
-                                                    style={{ background: step > n ? '#49BFFF' : 'rgba(255,255,255,0.08)' }} />
+                                                    style={{ background: step > n ? '#49BFFF' : 'var(--divider)' }} />
                                             )}
                                         </div>
                                     )
@@ -463,7 +469,7 @@ export default function OnboardPage() {
                                 {step === 1 && (
                                     <div>
                                         <h2 className="text-xl font-bold mb-1">Business Information</h2>
-                                        <p className="text-[13.5px] mb-6" style={{ color: '#8A8A9A' }}>
+                                        <p className="text-[13.5px] mb-6" style={{ color: 'var(--fg-2)' }}>
                                             Tell us about your business so we can set up the right loyalty program.
                                         </p>
                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
@@ -499,7 +505,6 @@ export default function OnboardPage() {
                                             className="w-full py-4 rounded-xl text-[15px] font-bold text-white transition-all duration-200"
                                             style={{
                                                 background: step1Valid ? '#3B266F' : 'rgba(59,38,111,0.3)',
-                                                border: '1px solid rgba(255,255,255,0.1)',
                                                 cursor: step1Valid ? 'pointer' : 'not-allowed',
                                             }}>
                                             Continue
@@ -511,7 +516,7 @@ export default function OnboardPage() {
                                 {step === 2 && (
                                     <div>
                                         <h2 className="text-xl font-bold mb-1">Contact Details</h2>
-                                        <p className="text-[13.5px] mb-6" style={{ color: '#8A8A9A' }}>
+                                        <p className="text-[13.5px] mb-6" style={{ color: 'var(--fg-2)' }}>
                                             Who should we reach out to for the onboarding call?
                                         </p>
                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
@@ -531,14 +536,13 @@ export default function OnboardPage() {
                                         <div className="flex gap-3">
                                             <button type="button" onClick={() => setStep(1)}
                                                 className="flex-1 py-4 rounded-xl text-[15px] font-medium transition-all duration-200"
-                                                style={{ background: 'transparent', border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.6)' }}>
+                                                style={{ background: 'transparent', border: '1px solid var(--divider)', color: 'var(--fg-2)' }}>
                                                 Back
                                             </button>
                                             <button type="button" onClick={() => setStep(3)} disabled={!step2Valid}
                                                 className="flex-[2] py-4 rounded-xl text-[15px] font-bold text-white transition-all duration-200"
                                                 style={{
                                                     background: step2Valid ? '#3B266F' : 'rgba(59,38,111,0.3)',
-                                                    border: '1px solid rgba(255,255,255,0.1)',
                                                     cursor: step2Valid ? 'pointer' : 'not-allowed',
                                                 }}>
                                                 Continue
@@ -551,7 +555,7 @@ export default function OnboardPage() {
                                 {step === 3 && (
                                     <div>
                                         <h2 className="text-xl font-bold mb-1">Loyalty Program Setup</h2>
-                                        <p className="text-[13.5px] mb-6" style={{ color: '#8A8A9A' }}>
+                                        <p className="text-[13.5px] mb-6" style={{ color: 'var(--fg-2)' }}>
                                             How would you like to reward your customers?
                                             You can change this any time in the vendor dashboard.
                                         </p>
@@ -567,18 +571,18 @@ export default function OnboardPage() {
                                                         className="rounded-xl p-5 text-left transition-all duration-200 relative"
                                                         style={{
                                                             background: isSelected
-                                                                ? opt.muted ? 'rgba(255,255,255,0.04)' : 'rgba(59,38,111,0.25)'
-                                                                : 'rgba(255,255,255,0.03)',
+                                                                ? opt.muted ? 'var(--bg-3)' : 'var(--purple-dim)'
+                                                                : 'var(--bg-surface)',
                                                             border: isSelected
-                                                                ? opt.muted ? '2px solid rgba(255,255,255,0.2)' : '2px solid #3B266F'
-                                                                : '1px solid rgba(255,255,255,0.08)',
+                                                                ? opt.muted ? '2px solid var(--divider)' : '2px solid #3B266F'
+                                                                : '1px solid var(--border-color)',
                                                         }}
                                                     >
                                                         {/* preview badge on custom */}
                                                         {opt.hasPreview && (
                                                             <span
                                                                 className="absolute top-3 right-3 text-[10px] font-bold px-2 py-0.5 rounded-full"
-                                                                style={{ background: 'rgba(73,191,255,0.15)', color: '#49BFFF' }}
+                                                                style={{ background: 'var(--purple-dim)', color: 'var(--purple)' }}
                                                             >
                                                                 Preview
                                                             </span>
@@ -587,20 +591,20 @@ export default function OnboardPage() {
                                                         {opt.muted && (
                                                             <span
                                                                 className="absolute top-3 right-3 text-[10px] font-bold px-2 py-0.5 rounded-full"
-                                                                style={{ background: 'rgba(255,255,255,0.07)', color: '#8A8A9A' }}
+                                                                style={{ background: 'var(--border-color)', color: 'var(--fg-muted)' }}
                                                             >
                                                                 Dashboard
                                                             </span>
                                                         )}
                                                         <p className="text-[13px] font-bold mb-0.5 pr-12"
-                                                            style={{ color: isSelected ? '#fff' : 'rgba(255,255,255,0.7)' }}>
+                                                            style={{ color: isSelected ? 'var(--purple)' : 'var(--fg)' }}>
                                                             {opt.title}
                                                         </p>
                                                         <p className="text-[12px] font-bold mb-2"
-                                                            style={{ color: opt.muted ? '#8A8A9A' : '#49BFFF' }}>
+                                                            style={{ color: opt.muted ? 'var(--fg-muted)' : 'var(--purple)' }}>
                                                             {opt.rate}
                                                         </p>
-                                                        <p className="text-[12px] leading-relaxed" style={{ color: '#8A8A9A' }}>
+                                                        <p className="text-[12px] leading-relaxed" style={{ color: 'var(--fg-2)' }}>
                                                             {opt.desc}
                                                         </p>
                                                     </button>
@@ -613,34 +617,37 @@ export default function OnboardPage() {
                                             <textarea
                                                 name="notes" value={form.notes} onChange={handleChange}
                                                 rows={4} placeholder="Tell us anything specific about your business..."
-                                                className="w-full rounded-xl px-4 py-3 text-[14px] text-white outline-none transition-all duration-200 resize-none"
-                                                style={{ background: '#1A1828', border: '1px solid rgba(255,255,255,0.08)' }}
+                                                className="w-full rounded-xl px-4 py-3 text-[14px] outline-none transition-all duration-200 resize-none"
+                                                style={{
+                                                    background: 'var(--bg-surface)',
+                                                    border: '1px solid var(--border-color)',
+                                                    color: 'var(--fg)',
+                                                }}
                                                 onFocus={e => e.target.style.borderColor = '#3B266F'}
-                                                onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.08)'}
+                                                onBlur={e => e.target.style.borderColor = 'var(--border-color)'}
                                             />
                                         </div>
 
                                         <div className="flex gap-3">
                                             <button type="button" onClick={() => setStep(2)}
                                                 className="flex-1 py-4 rounded-xl text-[15px] font-medium transition-all duration-200"
-                                                style={{ background: 'transparent', border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.6)' }}>
+                                                style={{ background: 'transparent', border: '1px solid var(--divider)', color: 'var(--fg-2)' }}>
                                                 Back
                                             </button>
                                             <button type="submit" disabled={loading}
                                                 className="flex-[2] py-4 rounded-xl text-[15px] font-bold text-white transition-all duration-200"
                                                 style={{
                                                     background: loading ? 'rgba(59,38,111,0.4)' : '#3B266F',
-                                                    border: '1px solid rgba(255,255,255,0.15)',
                                                     cursor: loading ? 'not-allowed' : 'pointer',
                                                 }}>
                                                 {loading ? 'Submitting...' : 'Submit Application'}
                                             </button>
                                         </div>
 
-                                        <p className="text-center text-[12px] mt-4" style={{ color: '#555566' }}>
+                                        <p className="text-center text-[12px] mt-4" style={{ color: 'var(--fg-muted)' }}>
                                             By submitting you agree to our{' '}
-                                            <Link href="#" style={{ color: '#8A8A9A' }}>Terms of Service</Link>{' '}and{' '}
-                                            <Link href="#" style={{ color: '#8A8A9A' }}>Privacy Policy</Link>
+                                            <Link href="#" style={{ color: 'var(--fg-2)' }}>Terms of Service</Link>{' '}and{' '}
+                                            <Link href="#" style={{ color: 'var(--fg-2)' }}>Privacy Policy</Link>
                                         </p>
                                     </div>
                                 )}
@@ -658,10 +665,10 @@ export default function OnboardPage() {
                                 { label: 'Go live', value: 'Same day' },
                             ].map(({ label, value }) => (
                                 <div key={label} className="rounded-xl p-4 text-center"
-                                    style={{ background: '#13111F', border: '1px solid rgba(255,255,255,0.06)' }}>
+                                    style={{ background: 'var(--bg-2)', border: '1px solid var(--divider)' }}>
                                     <p className="text-[11px] font-bold tracking-wider uppercase mb-1"
-                                        style={{ color: '#8A8A9A' }}>{label}</p>
-                                    <p className="text-[14px] font-bold" style={{ color: '#49BFFF' }}>{value}</p>
+                                        style={{ color: 'var(--fg-2)' }}>{label}</p>
+                                    <p className="text-[14px] font-bold" style={{ color: 'var(--purple)' }}>{value}</p>
                                 </div>
                             ))}
                         </div>

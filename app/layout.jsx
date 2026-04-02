@@ -1,5 +1,6 @@
 import './globals.css'
 import localFont from 'next/font/local'
+import { ThemeProvider } from '@/lib/ThemeContext'
 
 const yemeMedium = localFont({
     src: './fonts/YemeMedium.otf',
@@ -39,8 +40,26 @@ export default function RootLayout({ children }) {
             lang="en"
             className={`${yemeMedium.variable} ${yemeBold.variable}`}
         >
-            <body className="bg-[#0C0B14] text-white antialiased">
-                {children}
+            {/* Prevent flash of wrong theme — runs before React hydrates */}
+            <head>
+                <script dangerouslySetInnerHTML={{
+                    __html: `
+                        (function(){
+                            try {
+                                var saved = localStorage.getItem('theme')
+                                var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+                                if (saved === 'dark' || (!saved && prefersDark)) {
+                                    document.documentElement.classList.add('dark')
+                                }
+                            } catch(e) {}
+                        })()
+                    `
+                }} />
+            </head>
+            <body className="antialiased">
+                <ThemeProvider>
+                    {children}
+                </ThemeProvider>
             </body>
         </html>
     )

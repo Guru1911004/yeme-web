@@ -15,9 +15,9 @@ module.exports = {
                     'blue-dim': 'rgba(73,191,255,0.12)',
                 },
                 dark: {
-                    DEFAULT: '#0C0B14',
-                    2: '#13111F',
-                    3: '#1A1828',
+                    DEFAULT: '#F8F7FB',
+                    2: '#EEF2FF',
+                    3: '#E4E8FC',
                 },
             },
             fontFamily: {
